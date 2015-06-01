@@ -1,7 +1,8 @@
 function Sky() {
   this.plane = new Plane();
   this.clouds = this.makeClouds();
-  this.addListener();
+  this.addKeyListener();
+  this.addCollisionListener();
 }
 
 Sky.prototype.makeClouds = function() {
@@ -22,7 +23,7 @@ Sky.prototype.planeDown = function() {
   this.plane.down();
 }
 
-Sky.prototype.addListener = function() {
+Sky.prototype.addKeyListener = function() {
   var sky = this;
   $(document).keydown(function(e) {
     var code = (e.keyCode ? e.keyCode : e.which);
@@ -32,4 +33,25 @@ Sky.prototype.addListener = function() {
       sky.planeUp();
     }
   });
+}
+
+Sky.prototype.addCollisionListener = function() {
+  // var sky = this;
+  // setTimeout(function() {
+  //   if (sky.collisions) alert("ahhh!");
+  //   return sky.addCollisionListener();
+  // }, 500);
+}
+
+Sky.prototype.collisions = function() {
+  var sky = this;
+  var collision = false;
+  this.clouds.forEach(function(cloud) {
+    var cloudEle = $("#" + cloud.id);
+    if (sky.plane.collision(cloudEle)) {
+      console.log("collides with" + cloud.id);
+      collision = true;
+    }
+  });
+  return collision;
 }
