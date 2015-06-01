@@ -61,7 +61,7 @@ html,body {
 }
 
 /*Time to animate*/
-.x1 {
+#x1 {
   -webkit-transform: scale(0.95);
   -moz-transform: scale(0.95);
   transform: scale(0.95);
@@ -73,7 +73,7 @@ html,body {
 }
 
 /*variable speed, opacity, and position of clouds for realistic effect*/
-.x2 {
+#x2 {
   left: 200px;
   
   -webkit-transform: scale(0.6);
@@ -88,7 +88,7 @@ html,body {
   -o-animation: moveclouds 25s linear infinite;
 }
 
-.x3 {
+#x3 {
   left: 250px; top: -200px;
   
   -webkit-transform: scale(0.8);
@@ -101,7 +101,7 @@ html,body {
   -o-animation: moveclouds 20s linear infinite;
 }
 
-.x4 {
+#x4 {
   left: 470px; top: -250px;
   
   -webkit-transform: scale(0.75);
@@ -114,7 +114,7 @@ html,body {
   -o-animation: moveclouds 18s linear infinite;
 }
 
-.x5 {
+#x5 {
   left: 300px; top: -150px;
   
   -webkit-transform: scale(0.8);
@@ -127,7 +127,7 @@ html,body {
   -o-animation: moveclouds 20s linear infinite;
 }
 
-.x6 {
+#x6 {
   left: 200px;
   top: -75px;
   
