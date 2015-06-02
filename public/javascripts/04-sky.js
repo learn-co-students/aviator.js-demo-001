@@ -18,7 +18,7 @@ Sky.prototype.makeClouds = function() {
 
 Sky.prototype.makeBalloons = function() {
   var balloons = [];
-  $(".ballon").each( function(i, c) {
+  $(".balloon").each( function(i, c) {
     var id = $(c).attr('id')
     var balloon = new Balloon(id);
     balloons.push(balloon);
@@ -48,22 +48,26 @@ Sky.prototype.addKeyListener = function() {
 
 Sky.prototype.addCollisionListener = function() {
   var sky = this;
+  sky.updateStatus();
   setTimeout(function() {
-    if (sky.collisions) alert("ahhh!");
-    return sky.addCollisionListener();
-  }, 500);
+    sky.addCollisionListener();
+  }, 250);
 }
 
-Sky.prototype.collisions = function() {
-  // var sky = this;
-  // var collision = false;
-  // this.balloons.forEach(function(cloud) {
-  //   var cloudEle = $("#" + cloud.id);
-  //   if (sky.plane.collision(cloudEle)) {
-  //     console.log("collides with" + cloud.id);
-  //     collision = true;
-  //   }
-  // });
-  // return collision;
-  return false;
+Sky.prototype.updateStatus = function() {
+  var text = "fine";
+  if (this.collisionCheck()) text = "ahh!";
+  $("#status").text(text);
+}
+
+Sky.prototype.collisionCheck = function() {
+  var sky = this;
+  var collision = false;
+  this.balloons.forEach(function(balloon) {
+    var balloonEle = $("#" + balloon.id);
+    if (sky.plane.collision(balloonEle)) {
+      collision = true;
+    }
+  });
+  return collision;
 }
