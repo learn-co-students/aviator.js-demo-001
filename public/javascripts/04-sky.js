@@ -1,8 +1,10 @@
 function Sky() {
   this.plane = new Plane();
+  this.statusBar = new StatusBar();
   this.balloons = this.makeBalloons();
   this.addKeyListener();
   this.addCollisionListener();
+  this.life = 3;
 }
 
 Sky.prototype.makeBalloons = function() {
@@ -43,9 +45,18 @@ Sky.prototype.addCollisionListener = function() {
   }, 200);
 }
 
+Sky.prototype.explodeBalloon = function() {
+  this.crashBalloon.image.effect("explode");
+  var parent = this.crashBalloon.jQObj.parent();
+  var html = this.crashBalloon.jQObj.html();
+  this.crashBalloon.jQObj.remove();
+  parent.append(html);
+}
+
 Sky.prototype.processCollision = function() {
-  this.crashBalloon.jQObj.explode();
-  
+  this.explodeBalloon();
+  this.life -= 1;
+  this.statusBar.adjust(this.life);
 }
 
 Sky.prototype.updateStatus = function() {
