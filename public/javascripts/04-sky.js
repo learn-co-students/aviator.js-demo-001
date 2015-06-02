@@ -46,16 +46,13 @@ Sky.prototype.addCollisionListener = function() {
 }
 
 Sky.prototype.explodeBalloon = function() {
-  this.crashBalloon.image.effect("explode");
-  var parent = this.crashBalloon.jQObj.parent();
-  var html = this.crashBalloon.jQObj.html();
-  this.crashBalloon.jQObj.remove();
-  parent.append(html);
+  this.crashBalloon.explode();
 }
 
 Sky.prototype.processCollision = function() {
   this.explodeBalloon();
   this.life -= 1;
+  // if (this.life < 1) debugger; 
   this.statusBar.adjust(this.life);
 }
 
