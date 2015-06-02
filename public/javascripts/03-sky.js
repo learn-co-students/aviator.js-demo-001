@@ -44,6 +44,7 @@ Sky.prototype.addCollisionListener = function() {
 }
 
 Sky.prototype.processCollision = function() {
+  this.crashBalloon.jQObj.explode();
   
 }
 
@@ -75,7 +76,10 @@ Sky.prototype.collisionCheck = function() {
   var collision = false;
   this.balloons.forEach(function(balloon) {
     var collide = sky.collision(sky.plane.jQObj, balloon.jQObj);
-    if (collide) collision = true;
+    if (collide) {
+      collision = true;
+      sky.crashBalloon = balloon;
+    }
   });
   return collision;
 }
