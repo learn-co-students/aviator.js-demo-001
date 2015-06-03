@@ -6,6 +6,7 @@ function StatusBar() {
 
 StatusBar.prototype.adjust = function(lives) {
   this.livesLeft = lives;
+  console.log(lives);
   this.changeClass();
   this.changeWidth();
   this.changeLivesLeft();
@@ -16,7 +17,7 @@ StatusBar.prototype.changeLivesLeft = function() {
 }
 
 StatusBar.prototype.changeWidth = function() {
-  var width = (this.livesLeft / 3 * 100);
+  var width = (this.livesLeft / 4 * 100);
   if (width < 10) width = 2;
   this.jQObj.css("width", width + "%");
 }
@@ -32,7 +33,7 @@ StatusBar.prototype.addNewClass = function() {
 }
 
 StatusBar.prototype.removeOldClass = function() {
-  if (!(this.jQObj.hasClass("progress-bar-danger"))) {
+  if (this.livesLeft > 1) {
     var classList = this.jQObj.attr('class').split(/\s+/);
     var statusBar = this;
     $.each(classList, function(i, item){
