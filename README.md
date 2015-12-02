@@ -14,3 +14,4 @@ The HTML and CSS has been built out for you so you just have to worry about the 
 
 * [Bounding Box Collision](http://stackoverflow.com/a/5541252/2890716)
 * [Binding Arrow Keys with jQuery](http://stackoverflow.com/q/1402698/2890716)
+<a href='https://learn.co/lessons/aviator.js' data-visibility='hidden'>View this lesson on Learn.co</a>
